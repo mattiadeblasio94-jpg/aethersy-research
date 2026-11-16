@@ -1,0 +1,28 @@
+{
+  "name": "aethersy-research",
+  "version": "0.1.0",
+  "description": "Deep research skill Aethersy.AI. Avvia la CLI aethersy-research e affida il lavoro alla pipeline a 16 passaggi con vault persistente e ricercabile.",
+  "author": {
+    "name": "Aethersy.AI",
+    "url": "https://github.com/mattiadeblasio94-jpg"
+  },
+  "homepage": "https://github.com/mattiadeblasio94-jpg/aethersy-research",
+  "repository": "https://github.com/mattiadeblasio94-jpg/aethersy-research",
+  "license": "MIT",
+  "keywords": ["aethersy", "lara", "deep-research", "research", "codex", "openai-codex", "claude-code", "agent-skills", "skill", "citations", "research-agent", "literature-review"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "aethersy-research",
+    "shortDescription": "Deep research Aethersy.AI con citazioni verificate",
+    "longDescription": "Installa ed esegue la pipeline Aethersy Research: un processo a 16 passaggi che raccoglie fonti, approfondisce i punti controversi, redige, esegue critiche avversariali, applica correzioni e verifica ogni citazione prima della pubblicazione. Ogni fonte viene salvata in un vault Markdown e SQLite persistente e riutilizzabile. Richiede Python 3.11+ e `pip install aethersy-research`; la sessione deve disporre di uno spazio scrivibile e accesso alla rete.",
+    "developerName": "Aethersy.AI",
+    "category": "Research",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "websiteURL": "https://github.com/mattiadeblasio94-jpg/aethersy-research",
+    "defaultPrompt": [
+      "Research this question in depth and write a cited report: ",
+      "Do a literature review on ",
+      "Compare the evidence for and against "
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Aethersy Deep Research"
+  short_description: "Ricerca multi-fonte con citazioni verificate e vault persistente"
+  default_prompt: "Usa la skill aethersy-deep-research per svolgere una ricerca approfondita e scrivere un report con citazioni verificate: "
+policy:
+  allow_implicit_invocation: true

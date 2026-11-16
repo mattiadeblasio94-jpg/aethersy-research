@@ -1,0 +1,20 @@
+{
+  "name": "aethersy-research",
+  "interface": {
+    "displayName": "aethersy-research"
+  },
+  "plugins": [
+    {
+      "name": "aethersy-research",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Research"
+    }
+  ]
+}

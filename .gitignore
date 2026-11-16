@@ -1,0 +1,34 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+.idea/
+*.db
+.aethersy-research/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg
+.env
+bench/
+codex_bench/*
+!codex_bench/harness.py
+!codex_bench/README.md
+draco-bench/
+
+# Agent install outputs — generated per-user by `aethersy-research install`.
+# These files contain absolute paths resolved to the installing user's
+# Python environment. NEVER commit them. The authoritative versions live
+# in src/aethersy_research/skills/ (skills) and src/aethersy_research/core/hooks.py
+# (agent templates).
+.claude/
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+
+# Per-vault research output
+research/
+
+.knack/

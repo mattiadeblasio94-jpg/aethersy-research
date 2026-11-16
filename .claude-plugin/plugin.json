@@ -1,0 +1,13 @@
+{
+  "name": "aethersy-research",
+  "version": "0.1.0",
+  "description": "Deep research skill Aethersy.AI. Avvia la CLI aethersy-research e affida il lavoro alla pipeline a 16 passaggi con vault persistente e ricercabile.",
+  "author": {
+    "name": "Aethersy.AI",
+    "url": "https://github.com/mattiadeblasio94-jpg"
+  },
+  "homepage": "https://github.com/mattiadeblasio94-jpg/aethersy-research",
+  "repository": "https://github.com/mattiadeblasio94-jpg/aethersy-research",
+  "license": "MIT",
+  "keywords": ["aethersy", "lara", "deep-research", "research", "agent-skills", "skill", "citations", "research-agent", "literature-review"]
+}

@@ -1,0 +1,111 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aethersy-research"
+version = "0.1.0"
+description = "Deep research brandizzato Aethersy.AI: ricerca multi-fonte con citazioni verificate e vault persistente"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11,<3.15"
+authors = [{name = "Aethersy.AI"}]
+maintainers = [{name = "Aethersy.AI"}]
+keywords = ["aethersy", "lara", "deep-research", "research", "knowledge-base", "wiki", "llm", "markdown", "cli", "agent", "zettelkasten"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Text Processing :: Markup :: Markdown",
+]
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0",
+    "pyyaml>=6.0",
+    "pydantic>=2.0",
+    "jinja2>=3.1",
+    "platformdirs>=4.0",
+    "Crawl4AI>=0.7.3",
+    "pymupdf>=1.24",
+    "httpx>=0.27",
+    "numpy>=1.26",
+    "idna",
+]
+
+[project.optional-dependencies]
+crawl4ai = ["Crawl4AI>=0.7.3"]
+# Upper-bounded on purpose: mcp 2.0 removed `mcp.server.fastmcp`, which
+# `aethersy_research/mcp/server.py` builds every tool on. Without the bound a
+# fresh `pip install aethersy-research[mcp]` resolves 2.x and `aethersy-research mcp`
+# dies on import, reporting the extra as missing when it is in fact installed.
+mcp = ["mcp>=1.6,<2"]
+# The Parallel provider needs the Streamable HTTP client introduced in mcp 1.8.
+# Keep this separate so installing the Aethersy Research MCP server does not force
+# an unrelated SDK upgrade.
+parallel = ["mcp>=1.8,<2"]
+exa = ["exa-py>=2.0.0"]
+tavily = ["tavily-python>=0.3"]
+watch = ["watchdog>=4.0"]
+all = ["aethersy-research[crawl4ai,mcp,parallel,exa,tavily,watch]"]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.3",
+    "mypy>=1.8",
+    "exa-py>=2.0.0",
+    "mcp>=1.6,<2",
+    "types-PyYAML>=6.0.12",
+    "watchdog>=4.0",
+]
+
+[project.scripts]
+aethersy-research = "aethersy_research.cli:app"
+ares = "aethersy_research.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/mattiadeblasio94-jpg/aethersy-research"
+Repository = "https://github.com/mattiadeblasio94-jpg/aethersy-research"
+Issues = "https://github.com/mattiadeblasio94-jpg/aethersy-research/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aethersy_research"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "SIM", "RUF"]
+ignore = [
+    "E501",
+    "B008",
+    "B904",
+    "E402",
+    "N817",
+    "SIM105",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Profiles/render carry deliberate en dashes (user-facing range strings and
+# the dash filter); tests assert on en-dash-rendered prompt output. The
+# "ambiguous unicode" warnings are false positives by construction there.
+"src/aethersy_research/core/profiles.py" = ["RUF001"]
+"src/aethersy_research/core/render.py" = ["RUF001", "RUF002"]
+"src/aethersy_research/core/citecheck.py" = ["RUF001"]
+"tests/test_core/test_render.py" = ["RUF001", "RUF002"]
+"tests/test_core/test_prompt_golden.py" = ["RUF001", "RUF002"]
+"tests/test_cli/test_install_profile.py" = ["RUF001", "RUF002"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -q --strict-markers"

@@ -1,0 +1,17 @@
+{
+  "name": "aethersy-research",
+  "description": "Marketplace Aethersy.AI per aethersy-research, skill e pipeline di deep research.",
+  "owner": {
+    "name": "Aethersy.AI",
+    "url": "https://github.com/mattiadeblasio94-jpg"
+  },
+  "plugins": [
+    {
+      "name": "aethersy-research",
+      "source": "./",
+      "description": "Deep research Aethersy.AI. Avvia la CLI aethersy-research e affida il lavoro alla pipeline a 16 passaggi.",
+      "category": "research",
+      "homepage": "https://github.com/mattiadeblasio94-jpg/aethersy-research"
+    }
+  ]
+}
